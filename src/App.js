@@ -22,7 +22,8 @@ class App extends React.Component {
       pulse: false,
       micStatus: "",
       micText: "tap on microphone to get started...",
-      transcripts: []
+      transcripts: [],
+      latestQuestion: ""
     };
 
     // Load some commands to Artyom using the commands manager
@@ -79,33 +80,41 @@ class App extends React.Component {
     Arya.redirectRecognizedTextOutput(function(text, isFinal) {
       _this.setState({ micText: text });
       if (isFinal) {
+        _this.setState({ latestQuestion: text });
         _this.transcriptCount = _this.transcriptCount + 1;
-        _this.setState(
-          {
-            transcripts: _this.state.transcripts.concat({
-              id: _this.transcriptCount,
-              who: "You",
-              text: text
-            })
-          },
-          _this.matchCommand(text)
-        );
+        _this.setState({
+          transcripts: _this.state.transcripts.concat({
+            id: _this.transcriptCount,
+            who: "You",
+            text: text
+          })
+        });
 
         _this.setState({ micText: "listening..." });
       }
     });
-  }
 
-  matchCommand(commandText) {
     // Add the event listener
     Arya.when("NOT_COMMAND_MATCHED", () => {
-      fetch(
-        "https://tranquil-garden-78271.herokuapp.com/predict?q=" + commandText
-      )
-        .then(res => res.json())
-        .then(res => {
-          this.speakText(res.data);
-        });
+      _this.speakText(
+        "Sorry, I can't answer that question. Contacting DeepMind for an answer. Please wait..."
+      );
+
+      setTimeout(function() {
+        var question = _this.state.latestQuestion;
+
+        if (question !== "") {
+          _this.setState({ latestQuestion: "" });
+          fetch(
+            "https://tranquil-garden-78271.herokuapp.com/predict?q=" +
+              _this.latestQuestion
+          )
+            .then(res => res.json())
+            .then(res => {
+              _this.speakText(res.data);
+            });
+        }
+      }, 3000);
     });
   }
 

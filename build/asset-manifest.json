@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/voice-bot-ui/static/css/main.42b6b3cd.chunk.css",
-    "main.js": "/voice-bot-ui/static/js/main.dc74eedf.chunk.js",
-    "main.js.map": "/voice-bot-ui/static/js/main.dc74eedf.chunk.js.map",
+    "main.js": "/voice-bot-ui/static/js/main.1db0bcfa.chunk.js",
+    "main.js.map": "/voice-bot-ui/static/js/main.1db0bcfa.chunk.js.map",
     "runtime-main.js": "/voice-bot-ui/static/js/runtime-main.849b9174.js",
     "runtime-main.js.map": "/voice-bot-ui/static/js/runtime-main.849b9174.js.map",
     "static/js/2.96da84f0.chunk.js": "/voice-bot-ui/static/js/2.96da84f0.chunk.js",
     "static/js/2.96da84f0.chunk.js.map": "/voice-bot-ui/static/js/2.96da84f0.chunk.js.map",
     "index.html": "/voice-bot-ui/index.html",
-    "precache-manifest.48e74dbc55f94522deb307c924057f79.js": "/voice-bot-ui/precache-manifest.48e74dbc55f94522deb307c924057f79.js",
+    "precache-manifest.c563f9e6072e57bf44367a65fbeb4b7d.js": "/voice-bot-ui/precache-manifest.c563f9e6072e57bf44367a65fbeb4b7d.js",
     "service-worker.js": "/voice-bot-ui/service-worker.js",
     "static/css/main.42b6b3cd.chunk.css.map": "/voice-bot-ui/static/css/main.42b6b3cd.chunk.css.map",
     "static/js/2.96da84f0.chunk.js.LICENSE.txt": "/voice-bot-ui/static/js/2.96da84f0.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.849b9174.js",
     "static/js/2.96da84f0.chunk.js",
     "static/css/main.42b6b3cd.chunk.css",
-    "static/js/main.dc74eedf.chunk.js"
+    "static/js/main.1db0bcfa.chunk.js"
   ]
 }

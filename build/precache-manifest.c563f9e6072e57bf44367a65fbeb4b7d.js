@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4484ee9fdc9f54944545a0abca98ffa5",
+    "revision": "ea2b202fab7d35a37487f5e16f5b3bfa",
     "url": "/voice-bot-ui/index.html"
   },
   {
-    "revision": "c88afcd1f1ff72552a41",
+    "revision": "a0d80de11a2c545b206f",
     "url": "/voice-bot-ui/static/css/main.42b6b3cd.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/voice-bot-ui/static/js/2.96da84f0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c88afcd1f1ff72552a41",
-    "url": "/voice-bot-ui/static/js/main.dc74eedf.chunk.js"
+    "revision": "a0d80de11a2c545b206f",
+    "url": "/voice-bot-ui/static/js/main.1db0bcfa.chunk.js"
   },
   {
     "revision": "cf542ba972dcc6998439",
