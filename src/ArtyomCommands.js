@@ -39,14 +39,6 @@ export default class ArtyomCommandsManager {
         }
       },
       {
-        indexes: ["Fio Labs", "What does FIO Labs do?"],
-        action: () => {
-          callback(
-            "Fio Labs works on Data Science and Data Governance projects, to know more visit www.fiolabs.ai"
-          );
-        }
-      },
-      {
         indexes: ["what's your name", "your name"],
         action: () => {
           callback("My name is Arya, what's yours?");
@@ -91,20 +83,6 @@ export default class ArtyomCommandsManager {
         smart: true,
         action: () => {
           callback("I'm fine, thanks for asking !");
-        }
-      },
-
-      {
-        indexes: ["Generate reports of * of this year"],
-        smart: true,
-        action: (i, month) => {
-          let year = new Date().getFullYear();
-
-          callback(`Generating reports of ${month} ${year} `);
-
-          callback(
-            "Ready ! What were you expecting? write some code you lazy bear !"
-          );
         }
       }
     ]);

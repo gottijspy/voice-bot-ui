@@ -80,23 +80,32 @@ class App extends React.Component {
       _this.setState({ micText: text });
       if (isFinal) {
         _this.transcriptCount = _this.transcriptCount + 1;
-        _this.setState({
-          transcripts: _this.state.transcripts.concat({
-            id: _this.transcriptCount,
-            who: "You",
-            text: text
-          })
-        });
+        _this.setState(
+          {
+            transcripts: _this.state.transcripts.concat({
+              id: _this.transcriptCount,
+              who: "You",
+              text: text
+            })
+          },
+          _this.matchCommand(text)
+        );
 
         _this.setState({ micText: "listening..." });
       }
     });
+  }
 
+  matchCommand(commandText) {
     // Add the event listener
     Arya.when("NOT_COMMAND_MATCHED", () => {
-      _this.speakText(
-        "I'm sorry, I can't answer that! contacting DeepSearch, please wait..."
-      );
+      fetch(
+        "https://tranquil-garden-78271.herokuapp.com/predict?q=" + commandText
+      )
+        .then(res => res.json())
+        .then(res => {
+          this.speakText(res.data);
+        });
     });
   }
 
