@@ -31,7 +31,7 @@ class App extends React.Component {
     CommandsManager.loadCommands(this.speakText);
   }
 
-  speakText(msg, speak = true) {
+  speakText(msg, speak = true, who = "Arya") {
     let _this = this;
 
     if (msg === "stopAssistant") {
@@ -43,7 +43,7 @@ class App extends React.Component {
     _this.setState({
       transcripts: _this.state.transcripts.concat({
         id: _this.transcriptCount,
-        who: "Arya",
+        who: who,
         text: msg
       })
     });
@@ -96,9 +96,7 @@ class App extends React.Component {
 
     // Add the event listener
     Arya.when("NOT_COMMAND_MATCHED", () => {
-      _this.speakText(
-        "Sorry, I can't answer that question. Contacting DeepMind for an answer. Please wait..."
-      );
+      _this.speakText("Contacting DeepMind...");
 
       setTimeout(function() {
         var question = _this.state.latestQuestion;
@@ -106,12 +104,13 @@ class App extends React.Component {
         if (question !== "") {
           _this.setState({ latestQuestion: "" });
           fetch(
-            "https://tranquil-garden-78271.herokuapp.com/predict?q=" +
-              _this.latestQuestion
+            "http://localhost:3001/predict?ques=" +
+              question +
+              "&key=9736fb5d93e64f00be93468e8fa9d979"
           )
             .then(res => res.json())
-            .then(res => {
-              _this.speakText(res.data);
+            .then(data => {
+              _this.speakText(data.predictedAnswer, true, "DeepMind");
             });
         }
       }, 3000);
@@ -171,7 +170,11 @@ class App extends React.Component {
             {this.state.transcripts.map(transcript => (
               <p
                 className={
-                  transcript.who === "Arya" ? "dialog-said" : "dialog-heard"
+                  transcript.who === "Arya"
+                    ? "dialog-said"
+                    : transcript.who === "DeepMind"
+                    ? "dialog-said-deep"
+                    : "dialog-heard"
                 }
                 key={transcript.id}
               >
