@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET users listing. */
+/* GET config settings */
 router.get("/", function(req, res, next) {
   //res.send('respond with a resource');
 
@@ -16,6 +16,10 @@ router.get("/", function(req, res, next) {
       username: "D0loresH4ze"
     }
   ]);
+});
+
+router.post("/scrape", function(req, res, next) {
+  res.send({ projectID: 12345 });
 });
 
 module.exports = router;
