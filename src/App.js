@@ -104,7 +104,7 @@ class App extends React.Component {
         if (question !== "") {
           _this.setState({ latestQuestion: "" });
           fetch(
-            "http://localhost:3001/predict?ques=" +
+            "/api/predict?ques=" +
               question +
               "&key=9736fb5d93e64f00be93468e8fa9d979"
           )
